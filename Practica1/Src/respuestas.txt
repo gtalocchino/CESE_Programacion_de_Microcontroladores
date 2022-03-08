@@ -1,0 +1,17 @@
+¿Cómo responde el programa a las pulsaciones, hay falsos positivos o pulsaciones no detectadas? 
+¿Se implementa alguna técnica de antirrebote de las pulsaciones?
+
+El programa no detecta todas las pulsaciones realizadas. No se implementa ninguna tecnica antirebotes
+
+
+¿Cuál es el mejor momento para leer el pulsador, luego de un ciclo completo de la secuencia o después de encender y apagar un led? 
+¿Qué diferencia hay entre estas alternativas?
+
+Despues de encender y apagar un led. La diferencia es que se disminuye la cantidad de pulsaciones no detectadas
+
+
+¿Se puede cambiar el sentido de la secuencia en cualquier momento  de la ejecución?
+¿Cambiaría las respuestas a las preguntas anteriores si el tiempo de encendido de cada led fuera sensiblemente más grande, 1 segundo por ejemplo? 
+¿Y si fuera  sensiblemente más chico, 50 ms por ejemplo?
+
+No se puede. No
