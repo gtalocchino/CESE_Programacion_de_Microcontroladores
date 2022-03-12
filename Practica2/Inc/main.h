@@ -59,11 +59,14 @@ typedef struct{
 #define USARTx_RX_AF                     GPIO_AF7_USART3
 
 /* Exported macro ------------------------------------------------------------*/
+#define DELAY_LED1 100
+#define DELAY_LED2 500
+#define DELAY_LED3 1000
+
 /* Exported functions ------------------------------------------------------- */
 void delayInit(delay_t *delay, tick_t duration);
 bool_t delayRead(delay_t *delay);
 void delayWrite(delay_t *delay, tick_t duration);
-
 
 #endif /* __MAIN_H */
 

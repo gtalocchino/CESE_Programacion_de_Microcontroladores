@@ -70,38 +70,36 @@ int main(void)
   BSP_LED_Init(LED2);
   BSP_LED_Init(LED3);
 
-  /* Initialize BSP button for user button */
-  //BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_GPIO);
-
-
   /* Creating delays */
   delay_t delay_led_1;
   delay_t delay_led_2;
   delay_t delay_led_3;
 
   /* Initializing delays */
-  delayInit(&delay_led_1, 100);
-  delayInit(&delay_led_2, 500);
-  delayInit(&delay_led_3, 1000);
+  delayInit(&delay_led_1, DELAY_LED1);
+  delayInit(&delay_led_2, DELAY_LED2);
+  delayInit(&delay_led_3, DELAY_LED3);
 
   /* Infinite loop */
   while (1)
   {
 	  if (delayRead(&delay_led_1)) {
+		 /* Delay for LED 1 has elapsed.*/
 		 BSP_LED_Toggle(LED1);
 	  }
 
 	  if (delayRead(&delay_led_2)) {
+		  /* Delay for LED 2 has elapsed.*/
 		  BSP_LED_Toggle(LED2);
 	  }
 
 	  if (delayRead(&delay_led_3)) {
+		  /* Delay for LED 3 has elapsed.*/
 		  BSP_LED_Toggle(LED3);
 	  }
 
   }
 }
-
 
 void delayInit(delay_t *delay, tick_t duration) {
 	if (delay == NULL || duration == 0) {
