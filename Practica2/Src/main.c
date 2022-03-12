@@ -124,8 +124,8 @@ void delayInit(delay_t *delay, tick_t duration)
 }
 
 /**
-  * @brief  Configures LED GPIO.
-  * @param  Led: Specifies the Led to be configured.
+  * @brief  Checks if delay has elapsed
+  * @param  delay: Delay to be checked.
   *
   * @retval True if the delay has elapsed, otherwise False.
   */
@@ -175,8 +175,6 @@ void delayWrite(delay_t *delay, tick_t duration)
 
 	delay->duration = duration;
 }
-
-
 
 /**
   * @brief  System Clock Configuration

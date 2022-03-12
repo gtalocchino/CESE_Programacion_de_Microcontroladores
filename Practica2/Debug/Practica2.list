@@ -3524,7 +3524,7 @@ void delayInit(delay_t *delay, tick_t duration)
  80016fa:	4770      	bx	lr
 
 080016fc <delayRead>:
-  * @param  Led: Specifies the Led to be configured.
+  * @param  delay: Delay to be checked.
   *
   * @retval True if the delay has elapsed, otherwise False.
   */
