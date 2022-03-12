@@ -83,17 +83,20 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
-	  if (delayRead(&delay_led_1)) {
+	  if (delayRead(&delay_led_1))
+	  {
 		 /* Delay for LED 1 has elapsed.*/
 		 BSP_LED_Toggle(LED1);
 	  }
 
-	  if (delayRead(&delay_led_2)) {
+	  if (delayRead(&delay_led_2))
+	  {
 		  /* Delay for LED 2 has elapsed.*/
 		  BSP_LED_Toggle(LED2);
 	  }
 
-	  if (delayRead(&delay_led_3)) {
+	  if (delayRead(&delay_led_3))
+	  {
 		  /* Delay for LED 3 has elapsed.*/
 		  BSP_LED_Toggle(LED3);
 	  }
@@ -101,37 +104,72 @@ int main(void)
   }
 }
 
-void delayInit(delay_t *delay, tick_t duration) {
-	if (delay == NULL || duration == 0) {
+/**
+  * @brief  Initializes non-blocking delay.
+  * @param  delay: Delay to be initialized.
+  * @param  duration: Delay duration in ms.
+  *
+  */
+void delayInit(delay_t *delay, tick_t duration)
+{
+	/* Checking received parameters */
+	if (delay == NULL || duration == 0)
+	{
 		return;
 	}
 
+	/* Initializing delay */
 	delay->duration = duration;
 	delay->running = false;
 }
 
-bool_t delayRead(delay_t * delay) {
-	if (delay == NULL) {
-		return;
-	}
-
+/**
+  * @brief  Configures LED GPIO.
+  * @param  Led: Specifies the Led to be configured.
+  *
+  * @retval True if the delay has elapsed, otherwise False.
+  */
+bool_t delayRead(delay_t * delay)
+{
 	bool_t result = false;
 
-	if (delay->running) {
-		if ((HAL_GetTick() - delay->startTime) >= delay->duration) {
+	/* Checking received parameters */
+	if (delay == NULL)
+	{
+		return result;
+	}
+
+	if (delay->running)
+	{
+		/* Delay is running. Checking if the delay has elapsed. */
+		if ((HAL_GetTick() - delay->startTime) >= delay->duration)
+		{
+			/* Delay has elapsed */
 			delay->startTime = HAL_GetTick();
 			result =  true;
 		}
-	} else {
-		delay->running = true;
+	}
+	else
+	{
+		/* Delay is not running. Taking timestamp and switching to running. */
 		delay->startTime = HAL_GetTick();
+		delay->running = true;
 	}
 
 	return result;
 }
 
-void delayWrite(delay_t *delay, tick_t duration) {
-	if (delay == NULL) {
+/**
+  * @brief  Changes delay duration.
+  * @param  delay: Delay to be initialized.
+  * @param  duration: Delay duration in ms.
+  *
+  */
+void delayWrite(delay_t *delay, tick_t duration)
+{
+	/* Checking received parameters */
+	if (delay == NULL || duration == 0)
+	{
 		return;
 	}
 
