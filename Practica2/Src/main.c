@@ -100,7 +100,6 @@ int main(void)
 		  /* Delay for LED 3 has elapsed.*/
 		  BSP_LED_Toggle(LED3);
 	  }
-
   }
 }
 
@@ -174,6 +173,9 @@ void delayWrite(delay_t *delay, tick_t duration)
 	}
 
 	delay->duration = duration;
+
+	/* Resetting the delay in case it is running. */
+	delay->startTime = HAL_GetTick();
 }
 
 /**
