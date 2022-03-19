@@ -1,5 +1,12 @@
 # Programacion de Microcontroladores 17Co2022
 
-Practicas completas
+## Contenido
+Repositorio que contiene las practicas de la
+materia de Programación de Microcontroladores.
+
+## Autor
+Gianfranco Talocchino
+
+##Practicas completas
 * Practica 1
 * Practica 2
