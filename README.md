@@ -7,6 +7,6 @@ materia de Programación de Microcontroladores.
 ## Autor
 Gianfranco Talocchino
 
-##Practicas completas
+## Practicas completas
 * Practica 1
 * Practica 2
