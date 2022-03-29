@@ -90,35 +90,34 @@ int main(void)
   /* Initializing button */
   BSP_PB_Init(BUTTON_USER, BUTTON_MODE_GPIO);
 
-  uint32_t duration = 100;
+  /* LED2 delay initialization */
   delay_t delay_led;
+  uint32_t duration = LED_DELAY;
   delayInit(&delay_led, duration);
 
+  /* Initialization machine state */
   debounceFSM_init();
 
   /* Infinite loop */
   while (1)
   {
+	  /* Updating machine state */
 	  debounceFSM_update();
 
 	  if (readKey())
 	  {
+		  /* Button has been pressed */
 
-		  if (duration == 100)
-		  {
-			  duration = 500;
-		  }
-		  else
-		  {
-			  duration = 100;
-		  }
+		  duration = (duration == 100) ? 500 : 100;
 
+		  /* Changing delay duration */
 		  delayWrite(&delay_led, duration);
 	  }
 
 
 	  if (delayRead(&delay_led))
 	  {
+		  /* Delay has been elapsed */
 		  BSP_LED_Toggle(LED2);
 	  }
   }

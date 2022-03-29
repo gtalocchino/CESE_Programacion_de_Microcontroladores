@@ -11,11 +11,20 @@
 #include "API_delay.h"
 #include "stm32f4xx_nucleo_144.h"
 
-
+/**
+  * @brief  Initializes the de-bounce machine state.
+  */
 void debounceFSM_init(void);
 
+/**
+  * @brief  Update the de-bounce machine state.
+  */
 void debounceFSM_update(void);
 
+/**
+  * @brief  Indicates if the button has been pressed.
+  * @retval  True if the button has been pressed else false.
+  */
 bool_t readKey(void);
 
 #endif /* API_INC_API_DEBOUNCE_H_ */

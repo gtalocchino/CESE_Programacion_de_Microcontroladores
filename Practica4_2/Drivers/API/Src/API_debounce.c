@@ -19,12 +19,18 @@ static delay_t delay_button;
 static debounceState_t buttonState;
 static bool_t buttonPressed = false;
 
-
+/**
+  * @brief  Initializes the de-bounce machine state.
+  */
 void debounceFSM_init(void) {
 	buttonState = BUTTON_UP;
 }
 
-void debounceFSM_update(void) {
+/**
+  * @brief  Update the de-bounce machine state.
+  */
+void debounceFSM_update(void)
+{
 	switch (buttonState)
 	{
 	case BUTTON_UP:
@@ -74,11 +80,19 @@ void debounceFSM_update(void) {
 	}
 }
 
-bool_t readKey(void) {
-	if (buttonPressed) {
+/**
+  * @brief  Indicates if the button has been pressed.
+  * @retval  True if the button has been pressed else false.
+  */
+bool_t readKey(void)
+{
+	bool_t retval = false;
+
+	if (buttonPressed)
+	{
+		retval = true;
 		buttonPressed = false;
-		return true;
-	} else {
-		return false;
 	}
+
+	return retval;
 }

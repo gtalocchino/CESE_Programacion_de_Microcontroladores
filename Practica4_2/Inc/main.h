@@ -49,8 +49,7 @@
 #define USARTx_RX_AF                     GPIO_AF7_USART3
 
 /* Exported macro ------------------------------------------------------------*/
-#define LEDS_DELAY 200
-#define DEBOUCING_DELAY 180
+#define LED_DELAY 100
 
 
 /* Exported functions ------------------------------------------------------- */
