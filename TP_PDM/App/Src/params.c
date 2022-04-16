@@ -1,0 +1,54 @@
+/*
+ * input.c
+ *
+ *  Created on: Apr 9, 2022
+ *      Author: gianfranco
+ */
+
+
+#include "params.h"
+
+
+void parse_input(void)
+{
+   char input_buffer[128];
+   memset(input_buffer, 0, sizeof(input_buffer));
+
+   float heater_on = 0;
+   float heater_off = 0;
+   float cooler_on = 0;
+   float cooler_off = 0;
+
+   while (true) {
+      uint16_t bytes_received;
+      bsp_status_t status = SERIAL_get_input(input_buffer, 31, &bytes_received);
+
+      if (status != BSP_OK)
+      {
+         BSP_error_handler();
+      }
+
+      if (bytes_received != 31)
+      {
+         continue;
+      }
+
+      uint8_t *fmt = "%f, %f, %f, %f";
+      int32_t retval = sscanf(input_buffer, fmt, &heater_on, &heater_off, &cooler_on, &cooler_off);
+
+      if (retval == 4)
+      {
+         break;
+      }
+
+      uint8_t *msg = "error> wrong input format!\n";
+      status = LOG_send_msg(msg, strlen(msg));
+
+      if (status != BSP_OK)
+      {
+         BSP_error_handler();
+      }
+   }
+
+   FSM_set_limits(heater_on, heater_off, cooler_on, cooler_off);
+}
