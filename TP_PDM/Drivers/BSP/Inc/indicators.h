@@ -13,8 +13,18 @@
 #include "error.h"
 
 
+/**
+ * @brief Initializes indicators.
+ *
+ * @retval BSP status
+ *
+ */
 bsp_status_t IND_init(void);
 
+/**
+ * @brief Toggle indicator LED.
+ *
+ */
 void IND_toggle_led(void);
 
 

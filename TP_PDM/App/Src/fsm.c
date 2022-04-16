@@ -24,6 +24,7 @@ void FSM_init(void)
 
 void FSM_update(void)
 {
+   /* Obtaining the temperature value. */
    float temp;
    bsp_status_t status = SENSOR_get_measure(&temp);
 
@@ -85,6 +86,13 @@ void FSM_update(void)
       FSM_init();
       break;
    }
+
+   /*
+    * If msg is a NULL pointer there is no msg assigned to be
+    * sent by the state machine since the msg variable is
+    * initialized with a NULL pointer when declared.
+    *
+    */
 
    if (msg != NULL)
    {

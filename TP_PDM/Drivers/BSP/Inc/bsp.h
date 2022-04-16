@@ -19,10 +19,26 @@
 #include "indicators.h"
 
 
+/**
+ * @brief Initializes BSP.
+ *
+ * @retval BSP status.
+ */
 bsp_status_t BSP_init(void);
 
+
+/**
+ * @brief Returns SysTick value.
+ *
+ * @retval SysTick value.
+ */
 uint32_t BSP_get_timer(void);
 
+
+/**
+ * @brief Error handler.
+ *
+ */
 void BSP_error_handler(void);
 
 

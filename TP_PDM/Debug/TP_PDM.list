@@ -2496,7 +2496,6 @@ bsp_status_t SENSOR_get_measure(float *temp)
  80016f4:	e04f      	b.n	8001796 <SENSOR_get_measure+0xc6>
    }
 
-/********************************/
    float average_temperature = 0.0f;
  80016f6:	f04f 0300 	mov.w	r3, #0
  80016fa:	61fb      	str	r3, [r7, #28]

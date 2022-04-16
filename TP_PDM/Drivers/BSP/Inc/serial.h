@@ -20,11 +20,28 @@ typedef struct {
    UART_HandleTypeDef *handle;
 } serial_port_t;
 
-
+/**
+ * @brief Initializes serial port.
+ *
+ * @retval BSP status.
+ *
+ */
 bsp_status_t SERIAL_init(void);
 
+/**
+ * @brief Reads value received to serial port.
+ *
+ * @retval BSP status.
+ *
+ */
 bsp_status_t SERIAL_get_input(uint8_t *buffer, size_t size, uint16_t *received);
 
+/**
+ * @brief Gets the current serial port.
+ *
+ * @retval Serial port used.
+ *
+ */
 serial_port_t *SERIAL_get_port(void);
 
 

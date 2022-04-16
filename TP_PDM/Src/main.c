@@ -38,6 +38,7 @@ static void error_handler(void);
   */
 int main(void)
 {
+   /* Starting HAL Library, system clock and BSP. */
    bsp_status_t status = BSP_init();
 
    if (status != BSP_OK)
@@ -45,8 +46,10 @@ int main(void)
       error_handler();
    }
 
+   /* Obtaining operating parameters */
    parse_input();
 
+   /* Setting up delays. */
    delay_t delay_led;
    DELAY_init(&delay_led, 500);
 
@@ -56,22 +59,26 @@ int main(void)
    delay_t delay_log_temp;
    DELAY_init(&delay_log_temp, 1000);
 
+   /* Starting application machine state. */
    FSM_init();
 
    while (true)
    {
       if (DELAY_read(&delay_fsm))
       {
+         /* Delay time to update machine state has elapsed. */
          FSM_update();
       }
 
       if (DELAY_read(&delay_log_temp))
       {
+         /* Delay time to send temperature log has elapsed. */
          LOG_send_temp();
       }
 
       if (DELAY_read(&delay_led))
       {
+         /* Delay time to toggle running indicator has elapsed. */
          IND_toggle_led();
       }
    }

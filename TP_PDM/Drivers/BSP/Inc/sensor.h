@@ -14,9 +14,22 @@
 #include "stm32f4xx_hal.h"
 #include "error.h"
 
-
+/**
+ * @brief Initializes sensor.
+ *
+ * @retval BSP status
+ *
+ */
 bsp_status_t SENSOR_init(void);
 
+
+/**
+ * @brief Gets sensor measure.
+ *
+ * param[out] temp Pointer to output temperature value.
+ * @retval BSP status
+ *
+ */
 bsp_status_t SENSOR_get_measure(float *temp);
 
 

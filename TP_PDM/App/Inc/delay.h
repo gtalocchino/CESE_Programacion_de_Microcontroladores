@@ -22,10 +22,31 @@ typedef struct {
 } delay_t;
 
 
+/**
+ * @brief Initializes the delay.
+ *
+ * @param[in] delay Pointer to a delay.
+ * @param[in] duration Duration of a delay in ms.
+ *
+ */
 void DELAY_init(delay_t *delay, uint32_t duration);
 
+/**
+ * @brief Checks if the delay time has passed.
+ *
+ * @param[in] delay Pointer to a delay.
+ * @retval True if delay time has elapsed else false.
+ *
+ */
 bool DELAY_read(delay_t *delay);
 
+/**
+ * @brief Updates hysteresis state machine.
+ *
+ * @param[in] delay pointer to a delay.
+ * @param[in] duration Duration of a delay in ms.
+ *
+ */
 void DELAY_write(delay_t *delay, uint32_t duration);
 
 

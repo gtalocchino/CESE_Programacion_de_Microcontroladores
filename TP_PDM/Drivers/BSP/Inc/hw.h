@@ -13,6 +13,11 @@
 #include "error.h"
 
 
+/**
+ * @brief Initializes HAL and system clock.
+ *
+ * @retval BSP status.
+ */
 bsp_status_t HW_init(void);
 
 
