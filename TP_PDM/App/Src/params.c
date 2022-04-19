@@ -11,6 +11,7 @@
 
 void parse_input(void)
 {
+   /* Clearing input buffer. */
    char input_buffer[128];
    memset(input_buffer, 0, sizeof(input_buffer));
 
@@ -20,7 +21,8 @@ void parse_input(void)
    float cooler_off = 0;
 
    while (true) {
-      uint16_t bytes_received;
+      /* Waiting for input. */
+      uint16_t bytes_received = 0;
       bsp_status_t status = SERIAL_get_input(input_buffer, 31, &bytes_received);
 
       if (status != BSP_OK)
@@ -33,6 +35,7 @@ void parse_input(void)
          continue;
       }
 
+      /* Getting input parameters. */
       uint8_t *fmt = "%f, %f, %f, %f";
       int32_t retval = sscanf(input_buffer, fmt, &heater_on, &heater_off, &cooler_on, &cooler_off);
 
@@ -50,5 +53,6 @@ void parse_input(void)
       }
    }
 
+   /* Setting up parameters. */
    FSM_set_limits(heater_on, heater_off, cooler_on, cooler_off);
 }

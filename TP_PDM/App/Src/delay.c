@@ -28,12 +28,14 @@ bool DELAY_read(delay_t *delay)
    {
       if ((BSP_get_timer() - delay->start) > delay->duration)
       {
+         /* Delay time has been elapsed. Restarting delay and returning true. */
          delay->start = BSP_get_timer();
          retval = true;
       }
    }
    else
    {
+      /* Delay is not running. */
       delay->running = true;
       delay->start = BSP_get_timer();
    }
