@@ -39,6 +39,14 @@ void parse_input(void)
       uint8_t *fmt = "%f, %f, %f, %f";
       int32_t retval = sscanf(input_buffer, fmt, &heater_on, &heater_off, &cooler_on, &cooler_off);
 
+      /*
+       * We expect 4 items successfully matched and assigned by sscanf. They are
+       * heater_on, heater_off, cooler_on and cooler_off. Since the function
+       * sscanf returns the number of arguments processed correctly, if it is different
+       * from 4, the input format is not correct, so we remain in the loop.
+       *
+       */
+
       if (retval == 4)
       {
          break;
